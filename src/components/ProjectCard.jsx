@@ -8,6 +8,31 @@ import {
 import { DynamicIcon } from "lucide-react/dynamic";
 import { Badge } from "@/components/ui/badge.jsx";
 import { GitGraph, ExternalLink } from "lucide-react";
+import electron from "@/assets/electron.svg";
+import nextdotjs from "@/assets/nextdotjs.svg";
+import react from "@/assets/react.svg";
+import extensions from "@/assets/extensions.svg";
+import modelcontextprotocol from "@/assets/modelcontextprotocol.svg";
+import github from "@/assets/github.svg";
+
+const projecticon = (iconName) => {
+  switch (iconName) {
+    case "electron":
+      return electron;
+    case "nextdotjs":
+      return nextdotjs;
+    case "react":
+      return react;
+    case "extensions":
+      return extensions;
+    case "modelcontextprotocol":
+      return modelcontextprotocol;
+    case "github":
+      return github;
+    default:
+      return null;
+  }
+};
 
 function ProjectCard({
   project,
@@ -25,7 +50,11 @@ function ProjectCard({
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between mb-2">
           <div className="p-2 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg">
-            <DynamicIcon name={project.icon} size={32} />
+            <img
+              src={projecticon(project.externalIcon)}
+              alt="YouTube"
+              className="w-6 h-6 transition-transform transition-shadow duration-300 ease-in-out group-hover:scale-125 group-hover:drop-shadow-[0_2px_8px_rgba(246,28,13,0.5)]"
+            />
           </div>
           <div className="flex gap-2">
             <a
@@ -36,6 +65,7 @@ function ProjectCard({
               onClick={(e) => {
                 e.stopPropagation();
               }}
+              title="View on GitHub"
             >
               <GitGraph className="w-4 h-4" />
             </a>
@@ -48,6 +78,7 @@ function ProjectCard({
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
+                title="View Live App"
               >
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -63,19 +94,22 @@ function ProjectCard({
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-1">
-          {project.technologies.slice(0, 3).map((tech) => (
-            <Badge
-              key={tech}
-              variant="outline"
-              className={`text-xs border-slate-600/50 transition-colors ${
-                selectedTechnologies[tech]
-                  ? "bg-purple-900/50 text-purple-300 border-purple-500/50"
-                  : "bg-slate-900/50 text-slate-400"
-              }`}
-            >
-              {tech}
-            </Badge>
-          ))}
+          {project.technologies
+            .sort()
+            .slice(0, 3)
+            .map((tech) => (
+              <Badge
+                key={tech}
+                variant="outline"
+                className={`text-xs border-slate-600/50 transition-colors ${
+                  selectedTechnologies[tech]
+                    ? "bg-purple-900/50 text-purple-300 border-purple-500/50"
+                    : "bg-slate-900/50 text-slate-400"
+                }`}
+              >
+                {tech}
+              </Badge>
+            ))}
           {project.technologies.length > 3 && (
             <Badge
               variant="outline"

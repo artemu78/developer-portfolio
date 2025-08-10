@@ -61,7 +61,7 @@ function ProjectDialog({ selectedProject, setSelectedProject }) {
                 Technologies Used
               </h4>
               <div className="flex flex-wrap gap-2">
-                {selectedProject.technologies.map((tech) => (
+                {selectedProject.technologies.sort().map((tech) => (
                   <Badge
                     key={tech}
                     variant="secondary"

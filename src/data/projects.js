@@ -22,6 +22,7 @@ const projects = [
       "A comprehensive language learning application that leverages modern web technologies to provide an interactive and engaging learning experience. Built with Vite for fast development, TypeScript for type safety, and React for component-based architecture. The UI is crafted using shadcn-ui components and styled with Tailwind CSS for a modern, responsive design.",
     icon: "globe",
     screenshots: ["wordspark1.png", "wordspark2.png", "wordspark3.png"],
+    externalIcon: "react",
   },
   {
     id: 2,
@@ -41,6 +42,7 @@ const projects = [
     detailedDescription:
       "A sophisticated chat application that enables infinite dialogue sessions with large language models. Features real-time communication, advanced UI components, and seamless user experience. Built with modern React patterns and TypeScript for robust type checking and maintainability.",
     icon: "zap",
+    externalIcon: "react",
   },
   {
     id: 3,
@@ -53,6 +55,7 @@ const projects = [
     detailedDescription:
       "A technical assessment platform designed to evaluate programming skills and knowledge. Features interactive coding challenges, real-time feedback, and comprehensive reporting. Built with Create React App and follows modern web development best practices.",
     icon: "code",
+    externalIcon: "react",
   },
   {
     id: 4,
@@ -66,6 +69,7 @@ const projects = [
     detailedDescription:
       "A Chrome extension called TextAigist that integrates with the OpenAI ChatGPT API to provide text summarization capabilities. Users can select text on any webpage and get instant summaries. Features secure API key management, OAuth 2.0 authentication, and privacy-focused design.",
     icon: "cpu",
+    externalIcon: "extensions",
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ const projects = [
     detailedDescription:
       "A Chrome extension that enhances the Todoist web application by displaying completed tasks directly on the interface. Features automatic updates every 10 seconds, manual refresh capability, and OAuth 2.0 integration for secure access to Todoist API. Designed with user privacy in mind.",
     icon: "globe",
+    externalIcon: "extensions",
   },
   {
     id: 6,
@@ -98,6 +103,7 @@ const projects = [
     detailedDescription:
       "A desktop application built with Electron that provides Text-to-Speech capabilities and character animation features. Integrates with various APIs to deliver multimedia content creation tools. Features audio file generation, character animations, and a user-friendly interface.",
     icon: "monitor-check",
+    externalIcon: "electron",
   },
   {
     id: 7,
@@ -109,6 +115,7 @@ const projects = [
     detailedDescription:
       "An educational web application focused on improving teamwork skills through interactive courses and progress tracking. Features a game-like progress tracker, comprehensive course content, and modern UI design. Built with TypeScript for enhanced development experience.",
     icon: "code",
+    externalIcon: "react",
   },
   {
     id: 8,
@@ -122,6 +129,7 @@ const projects = [
     detailedDescription:
       "A Chrome extension that automatically converts Turkish Lira (TL) prices to US Dollars (USD) on sahibinden.com using real-time exchange rates. Features automatic price detection, real-time conversion, and privacy-focused design with no data collection.",
     icon: "globe",
+    externalIcon: "extensions",
   },
   {
     id: 9,
@@ -142,6 +150,7 @@ const projects = [
     detailedDescription:
       "A web application designed for creative exploration of image generation using AI prompts. Users can input text prompts to generate unique images, and further manipulate them with various tools and effects. Built with Vite for a fast development experience, TypeScript for robust code, and React for a dynamic user interface. Styling is handled with shadcn-ui and Tailwind CSS for a modern and responsive design.",
     icon: "image",
+    externalIcon: "react",
   },
   {
     id: 10,
@@ -153,6 +162,7 @@ const projects = [
     detailedDescription:
       "A comprehensive event management web application built with Next.js 14 for managing events and collecting attendee feedback. Features include event creation, attendee management, feedback collection, voice feedback capabilities, and real-time analytics. The application uses Firebase for backend services and is deployed on Vercel for optimal performance.",
     icon: "calendar",
+    externalIcon: "nextdotjs",
   },
   {
     id: 11,
@@ -164,6 +174,7 @@ const projects = [
     detailedDescription:
       "A comprehensive event management web application built with Next.js 14 for managing events and collecting attendee feedback. Features include event creation, attendee management, feedback collection, voice feedback capabilities, and real-time analytics. The application uses Firebase for backend services and is deployed on Vercel for optimal performance.",
     icon: "calendar",
+    externalIcon: "modelcontextprotocol",
   },
 ];
 
