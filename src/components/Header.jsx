@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button.jsx";
 import { Checkbox } from "@/components/ui/checkbox.jsx";
 
@@ -9,6 +10,22 @@ function Header({
   filteredProjects,
   projects,
 }) {
+  // Animated word cycling
+  const words = ["Full-Stack", "Front-End", "AI-first"];
+  const [currentWord, setCurrentWord] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrentWord((prev) => (prev + 1) % words.length);
+        setFade(true);
+      }, 400); // fade out duration
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <header className="container mx-auto px-6 py-12 text-center">
       <div className="mb-8">
@@ -16,7 +33,14 @@ function Header({
           Artem Reva
         </h1>
         <p className="text-xl md:text-2xl text-slate-300 mb-6 animate-fade-in-delay">
-          Full-Stack Developer & Innovation Enthusiast
+          <span
+            className={`inline-block transition-opacity duration-1000 w-32 ${
+              fade ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {words[currentWord]}
+          </span>{" "}
+          Developer
         </p>
 
         {/* Technology Filters */}
