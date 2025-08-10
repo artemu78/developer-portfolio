@@ -91,7 +91,7 @@ function Header({
       <SocialLinks />
       <div className="mb-8">
         <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 animate-fade-in">
-          Artem Reva
+          Artem (Tim) Reva
         </h1>
         <p className="text-xl md:text-2xl text-slate-300 mb-6 animate-fade-in-delay">
           <span
