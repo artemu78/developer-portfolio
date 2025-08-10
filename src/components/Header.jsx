@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button.jsx";
 import { Checkbox } from "@/components/ui/checkbox.jsx";
 import youtube from "@/assets/youtube.svg";
 import github from "@/assets/github.svg";
 import linkedin from "@/assets/linkedin.svg";
+import { SearchIcon } from "lucide-react";
 
 // 1. Social Links Component
 // For better organization, the social links are in their own component.
@@ -71,9 +72,26 @@ function Header({
   projects,
 }) {
   // Animated word cycling
+  const [showFilter, setShowFilter] = useState(false);
+  const [filterValue, setFilterValue] = useState("");
   const words = ["Full-Stack", "Front-End", "AI-first"];
   const [currentWord, setCurrentWord] = useState(0);
   const [fade, setFade] = useState(true);
+  // Ref for filter UI
+  const filterRef = useRef(null);
+  // Hide filter textbox when clicking outside
+  useEffect(() => {
+    if (!showFilter) return;
+    function handleClickOutside(event) {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setShowFilter(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showFilter]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -93,6 +111,7 @@ function Header({
         <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 animate-fade-in">
           Artem (Tim) Reva
         </h1>
+
         <p className="text-xl md:text-2xl text-slate-300 mb-6 animate-fade-in-delay">
           <span
             className={`inline-block transition-opacity duration-1000 w-32 ${
@@ -105,59 +124,92 @@ function Header({
         </p>
 
         {/* Technology Filters */}
-        <div className="mb-8">
-          <h3 className="text-lg text-slate-300 mb-4">
-            Filter by Technologies:
-          </h3>
-          <div className="flex flex-col md:flex-row gap-6 justify-center max-w-4xl mx-auto items-center">
-            {/* Controls box on the left */}
-            <div className="flex flex-col items-start justify-start bg-slate-800/60 border border-slate-700 rounded-lg p-4 min-w-[140px] shadow-lg">
-              <Button
-                variant="secondary"
-                className="mb-2 w-full"
-                onClick={() => {
-                  const allChecked = {};
-                  allTechnologies.forEach((tech) => {
-                    allChecked[tech] = true;
-                  });
-                  setSelectedTechnologies(allChecked);
-                }}
+        <div className="flex flex-col md:flex-row gap-6 justify-between max-w-4xl mx-auto items-start">
+          {/* Controls box on the left */}
+          <div className="flex flex-col items-start justify-between bg-slate-800/60 border border-slate-700 rounded-lg p-4 shadow-lg">
+            <Button
+              variant="secondary"
+              className="mb-2 w-full"
+              onClick={() => {
+                const allChecked = {};
+                allTechnologies.forEach((tech) => {
+                  allChecked[tech] = true;
+                });
+                setSelectedTechnologies(allChecked);
+              }}
+            >
+              Select all
+            </Button>
+            <Button
+              variant="secondary"
+              className="w-full"
+              onClick={() => {
+                const allUnchecked = {};
+                allTechnologies.forEach((tech) => {
+                  allUnchecked[tech] = false;
+                });
+                setSelectedTechnologies(allUnchecked);
+              }}
+            >
+              Deselect all
+            </Button>
+          </div>
+          {/* Technology checkboxes on the right */}
+          <div className="grow">
+            <h3 className="text-lg text-slate-300 mb-4">
+              <span
+                ref={filterRef}
+                className="flex items-center justify-between gap-2"
               >
-                Select all
-              </Button>
-              <Button
-                variant="secondary"
-                className="w-full"
-                onClick={() => {
-                  const allUnchecked = {};
-                  allTechnologies.forEach((tech) => {
-                    allUnchecked[tech] = false;
-                  });
-                  setSelectedTechnologies(allUnchecked);
-                }}
-              >
-                Deselect all
-              </Button>
-            </div>
-            {/* Technology checkboxes on the right */}
+                Filter by Technologies:
+                <span className="flex items-center">
+                  {showFilter && (
+                    <input
+                      type="text"
+                      autoFocus
+                      className="w-full md:w-64 px-3 rounded border border-slate-700 bg-slate-900 text-slate-200 focus:outline-none focus:border-purple-500 transition-colors"
+                      placeholder="Type to filter technologies..."
+                      value={filterValue}
+                      onChange={(e) => setFilterValue(e.target.value)}
+                    />
+                  )}
+                  {!showFilter && filterValue && (
+                    <span className="text-gray-400">{filterValue}</span>
+                  )}
+                  <button
+                    type="button"
+                    aria-label="Filter technologies"
+                    className="ml-2 p-1 rounded hover:bg-slate-700 focus:outline-none"
+                    onClick={() => setShowFilter((v) => !v)}
+                  >
+                    <SearchIcon className="w-6 h-6 cursor-pointer" />
+                  </button>
+                </span>
+              </span>
+            </h3>
             <div className="flex flex-wrap gap-3 items-center">
-              {allTechnologies.sort().map((tech) => (
-                <div key={tech} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={tech}
-                    checked={selectedTechnologies[tech]}
-                    onCheckedChange={() => handleTechnologyToggle(tech)}
-                    className="border-slate-500 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
-                    label={tech}
-                  />
-                </div>
-              ))}
+              {allTechnologies
+                .filter((tech) =>
+                  tech.toLowerCase().includes(filterValue.toLowerCase())
+                )
+                .sort()
+                .map((tech) => (
+                  <div key={tech} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={tech}
+                      checked={selectedTechnologies[tech]}
+                      onCheckedChange={() => handleTechnologyToggle(tech)}
+                      className="border-slate-500 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
+                      label={tech}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
-          <p className="text-sm text-slate-500 mt-3">
-            Showing {filteredProjects.length} of {projects.length} projects
-          </p>
         </div>
+        <p className="text-sm text-slate-500 mt-3">
+          Showing {filteredProjects.length} of {projects.length} projects
+        </p>
       </div>
     </header>
   );

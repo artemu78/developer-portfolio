@@ -51,7 +51,6 @@ function App() {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
         <Header
           allTechnologies={allTechnologies}
           selectedTechnologies={selectedTechnologies}
@@ -61,7 +60,6 @@ function App() {
           projects={projects}
         />
 
-        {/* Projects Grid */}
         <main className="container mx-auto px-6 pb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProjects.map((project, index) => (
@@ -87,7 +85,6 @@ function App() {
           )}
         </main>
 
-        {/* Project Detail Modal */}
         <ProjectDialog
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
