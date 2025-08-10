@@ -14,6 +14,7 @@ const projects = [
       "Gemini API",
       "Fal API",
       "ElevenLabs API",
+      "AWS S3",
     ],
     githubLink: "https://github.com/artemu78/wordspark-linguify-learn",
     appLink: "https://wordspark.online/",
@@ -27,7 +28,14 @@ const projects = [
     title: "Infinite LLM Dialogue",
     description:
       "An advanced chat application with infinite dialogue capabilities",
-    technologies: ["Vite", "TypeScript", "React", "shadcn-ui", "Tailwind CSS"],
+    technologies: [
+      "Vite",
+      "TypeScript",
+      "React",
+      "shadcn-ui",
+      "Tailwind CSS",
+      "AWS Lambda",
+    ],
     githubLink: "https://github.com/artemu78/infinite-llm-dialogue",
     appLink: "https://artemu78.github.io/infinite-llm-dialogue/",
     detailedDescription:
@@ -63,7 +71,7 @@ const projects = [
     id: 5,
     title: "Todoist Chrome Extension",
     description: "Enhanced Todoist experience with completed tasks display",
-    technologies: ["JavaScript", "HTML"],
+    technologies: ["JavaScript", "Chrome Extensions", "Todoist API"],
     githubLink: "https://github.com/artemu78/todoist-chrome-extension",
     appLink:
       "https://chromewebstore.google.com/detail/todoist-completed-tasks/paapllajhpnafedjcijfpapmlnioiggc",
@@ -81,8 +89,9 @@ const projects = [
       "React",
       "Electron",
       "Hedra",
-      "ElevenLabs",
+      "ElevenLabs API",
       "OpenAI",
+      "Node.js",
     ],
     githubLink: "https://github.com/artemu78/Creato",
     appLink: "",
@@ -138,7 +147,18 @@ const projects = [
     id: 10,
     title: "Events N Feedbacks",
     description: "React web app for managing events and attendee feedback",
-    technologies: ["Next.js", "TypeScript", "React", "Firebase"],
+    technologies: ["Next.js", "TypeScript", "React", "Firebase", "Material UI"],
+    githubLink: "https://github.com/artemu78/events-n-feedbacks",
+    appLink: "https://events-n-feedbacks.vercel.app", // Live app available
+    detailedDescription:
+      "A comprehensive event management web application built with Next.js 14 for managing events and collecting attendee feedback. Features include event creation, attendee management, feedback collection, voice feedback capabilities, and real-time analytics. The application uses Firebase for backend services and is deployed on Vercel for optimal performance.",
+    icon: "calendar",
+  },
+  {
+    id: 11,
+    title: "AWS S3 MCP Server",
+    description: "Locally run MCP Server to upload files to S3 bucket",
+    technologies: ["Node.js", "AWS S3", "MCP"],
     githubLink: "https://github.com/artemu78/events-n-feedbacks",
     appLink: "https://events-n-feedbacks.vercel.app", // Live app available
     detailedDescription:

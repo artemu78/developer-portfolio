@@ -1,22 +1,8 @@
 import { useState, useMemo } from "react";
 import {} from "@/components/ui/card.jsx";
 import ProjectCard from "@/components/ProjectCard.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import { Badge } from "@/components/ui/badge.jsx";
-import { DialogTrigger } from "@/components/ui/dialog.jsx";
 import ProjectDialog from "@/components/ProjectDialog.jsx";
 import Header from "@/components/Header.jsx";
-import { Checkbox } from "@/components/ui/checkbox.jsx";
-import {
-  Github,
-  ExternalLink,
-  Code,
-  Zap,
-  Cpu,
-  Globe,
-  Image,
-  Calendar,
-} from "lucide-react";
 import "./App.css";
 import projects from "@/data/projects";
 
