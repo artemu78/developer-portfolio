@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import {} from "@/components/ui/card.jsx";
 import ProjectCard from "@/components/ProjectCard.jsx";
 import ProjectDialog from "@/components/ProjectDialog.jsx";
 import Header from "@/components/Header.jsx";
@@ -19,16 +18,15 @@ function App() {
   }, []);
 
   // Initialize all technologies as checked
-  const [selectedTechnologies, setSelectedTechnologies] = useState(() => {
-    const initialState = {};
-    allTechnologies.forEach((tech) => {
-      initialState[tech] = true;
-    });
-    return initialState;
-  });
+  const [selectedTechnologies, setSelectedTechnologies] = useState({});
 
   // Filter projects based on selected technologies
   const filteredProjects = useMemo(() => {
+    const selectedTechCount = Object.keys(selectedTechnologies).filter(
+      (tech) => selectedTechnologies[tech]
+    ).length;
+
+    if (selectedTechCount === 0) return projects;
     return projects.filter((project) => {
       return project.technologies.some((tech) => selectedTechnologies[tech]);
     });
