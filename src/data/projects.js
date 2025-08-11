@@ -169,8 +169,8 @@ const projects = [
     title: "AWS S3 MCP Server",
     description: "Locally run MCP Server to upload files to S3 bucket",
     technologies: ["Node.js", "AWS S3", "MCP"],
-    githubLink: "https://github.com/artemu78/events-n-feedbacks",
-    appLink: "https://events-n-feedbacks.vercel.app", // Live app available
+    githubLink: "https://github.com/artemu78/mcp-server-s3-uploader",
+    appLink: "",
     detailedDescription:
       "A comprehensive event management web application built with Next.js 14 for managing events and collecting attendee feedback. Features include event creation, attendee management, feedback collection, voice feedback capabilities, and real-time analytics. The application uses Firebase for backend services and is deployed on Vercel for optimal performance.",
     icon: "calendar",
